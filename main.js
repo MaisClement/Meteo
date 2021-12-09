@@ -650,18 +650,26 @@ async function Update(){
                 type = lib[libele][2]
             }
         }
-        const d = new Date();
-        date = Days[d.getDay()] + ' ' + d.getDate() + ' ' + Month[d.getMonth()]
-
         changeWeather(weather[type]);
-        document.getElementsByClassName('temp')[0].innerHTML = temp;
-        document.getElementById('date').innerHTML = date
+        document.getElementsByClassName('temp')[0].innerHTML = temp;        
 
         //setTimeout("document.getElementById('summary').innerHTML = name", 2000);
         
         setTimeout("Update()", 60000);
 
+		
+
     }
 }
 
+function setTime() {
+	const d = new Date();
+	date = Days[d.getDay()] + ' ' + d.getDate() + ' ' + Month[d.getMonth()] + ' - ' + d.getHours() + ':' + d.getMinutes();
+
+	document.getElementById('date').innerHTML = date;
+
+	
+}
+
 getLocation();
+setTimeout("setTime()", 500);

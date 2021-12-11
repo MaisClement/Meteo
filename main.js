@@ -651,25 +651,19 @@ async function Update(){
             }
         }
         changeWeather(weather[type]);
-        document.getElementsByClassName('temp')[0].innerHTML = temp;        
+        document.getElementsByClassName('temp')[0].innerHTML = temp; 
+		
+		var container = document.getElementById('container');
 
-        //setTimeout("document.getElementById('summary').innerHTML = name", 2000);
+		container.style.display = '';
         
         setTimeout("Update()", 60000);
-
-		
-
     }
 }
 
-function setTime() {
-	const d = new Date();
-	date = Days[d.getDay()] + ' ' + d.getDate() + ' ' + Month[d.getMonth()] + ' - ' + d.getHours() + ':' + d.getMinutes();
+getLocation();
 
-	document.getElementById('date').innerHTML = date;
-
-	
+function clearWebCam(){
+	window.frames['webcam'].document.getElementByClassName('top-main')[0].outerHtml = '';
 }
 
-getLocation();
-setTimeout("setTime()", 500);
